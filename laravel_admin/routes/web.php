@@ -16,3 +16,17 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// マルチユーザー認証のため追加
+Route::get('/login/admin',[App\Http\Controllers\Auth\LoginController::class,'showAdminLoginForm']);
+Route::get('/register/admin',[App\Http\Controllers\Auth\RegisterController::class,'showAdminRegisterForm']);
+
+Route::post('/login/admin',[App\Http\Controllers\Auth\LoginController::class,'adminLogin']);
+Route::post('/register/admin',[App\Http\Controllers\Auth\RegisterController::class,'registerAdmin'])->name('admin-register');
+
+Route::view('/admin','admin')->middleware('auth:admin')->name('admin-home');
+
