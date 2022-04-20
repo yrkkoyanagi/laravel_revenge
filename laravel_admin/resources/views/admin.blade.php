@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
     @if(session('flash_message'))
-        <div class="flash_message">
+        <div class="alert alert-primary text-center" role="alert">
             {{session('flash_message')}}
         </div>
     @endif
