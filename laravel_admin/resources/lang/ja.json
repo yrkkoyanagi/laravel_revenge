@@ -6,7 +6,8 @@
     "Email Address" : "メールアドレス",
     "Password" : "パスワード",
     "Remember Me" : "パスワードを記憶する",
-    "Forgot Your Password?" : "パスワードを忘れた？"
-
-
+    "Forgot Your Password?" : "パスワードを忘れた？",
+    "Edit" : "編集する",
+    "Go Delete" : "削除する"
+    
 }

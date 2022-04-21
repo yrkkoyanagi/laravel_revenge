@@ -29,6 +29,8 @@ Route::post('/login/admin',[App\Http\Controllers\Auth\LoginController::class,'ad
 Route::post('/register/admin',[App\Http\Controllers\Auth\RegisterController::class,'registerAdmin'])->name('admin-register');
 Route::get('/insert', [App\Http\Controllers\ShopController::class, 'insert'])->middleware('auth:admin')->name('insert');
 Route::post('/create', [App\Http\Controllers\ShopController::class, 'create'])->middleware('auth:admin')->name('create');
+Route::get('/list', [App\Http\Controllers\ShopController::class, 'list'])->middleware('auth:admin')->name('list');
+Route::post('/delete', [App\Http\Controllers\ShopController::class, 'delete'])->middleware('auth:admin')->name('delete');
 
 
 Route::view('/admin','admin')->middleware('auth:admin')->name('admin-home');

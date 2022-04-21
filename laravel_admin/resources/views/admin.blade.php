@@ -13,20 +13,13 @@
                 <div class="card-header">管理者{{ __('Dashboard') }}</div>
 
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in as 管理者！') }}
+                    <a href="{{ url('/list') }}">一覧画面に進む</a>
                 </div>
             </div>
             <div class="card">
                 <div class="card-header">店舗登録</div>
-
                     <div class="card-body">
-                               <a href="{{ url('/insert') }}">登録画面に進む</a>
+                        <a href="{{ url('/insert') }}">登録画面に進む</a>
                     </div>
                 </div>
             </div>

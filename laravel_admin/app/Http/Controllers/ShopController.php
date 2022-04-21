@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Shop;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ShopController extends Controller
 {
@@ -12,6 +14,15 @@ class ShopController extends Controller
         return view('insert');
 
     }
+
+    public function list(Request $request){
+        $admin_id = Auth::user()->id;
+        $shops = DB::table('shops')->where('create_user',$admin_id)->paginate(5);
+
+        return view('list',['shops' => $shops]);
+
+    }
+
 
     public function create(Request $request){
         $shop = new Shop();
@@ -35,6 +46,12 @@ class ShopController extends Controller
         $shop->save();
 
         return redirect('admin')->with('flash_message','登録が完了しました！');
+
+    }
+
+    public function delete(Request $request){
+
+            return view('insert');
 
     }
 }
