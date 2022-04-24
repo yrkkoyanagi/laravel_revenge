@@ -30,8 +30,9 @@ Route::post('/register/admin',[App\Http\Controllers\Auth\RegisterController::cla
 Route::get('/insert', [App\Http\Controllers\ShopController::class, 'insert'])->middleware('auth:admin')->name('insert');
 Route::post('/create', [App\Http\Controllers\ShopController::class, 'create'])->middleware('auth:admin')->name('create');
 Route::get('/list', [App\Http\Controllers\ShopController::class, 'list'])->middleware('auth:admin')->name('list');
-Route::post('/delete', [App\Http\Controllers\ShopController::class, 'delete'])->middleware('auth:admin')->name('delete');
-
+Route::get('/edit/{id}', [App\Http\Controllers\ShopController::class, 'edit'])->middleware('auth:admin')->name('edit');
+Route::post('/update/{id}', [App\Http\Controllers\ShopController::class, 'update'])->middleware('auth:admin')->name('update');
+Route::post('/delete/{id}', [App\Http\Controllers\ShopController::class, 'delete'])->middleware('auth:admin')->name('delete');
 
 Route::view('/admin','admin')->middleware('auth:admin')->name('admin-home');
 

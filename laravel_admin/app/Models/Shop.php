@@ -24,9 +24,4 @@ class Shop extends Model
         'localsake',
         'craftbeer'
     ];
-
-    public function searchByAdminId(){
-
-
-    }
 }

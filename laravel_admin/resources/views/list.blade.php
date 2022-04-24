@@ -15,8 +15,8 @@
                     <div class="card">
                         <div class="card-body">
                             <h3 class="card-title">{{ $shop->shop_name}}</h3>
-                            <a href="route('edit',$shop->shop_id)" class="btn btn-warning">{{__('Edit')}}</a>
-                            <form action="{{route('delete',$shop->shop_id)}}" method="post" class="d-inline">
+                            <a href="{{route('edit',$shop->id)}}" class="btn btn-warning">{{__('Edit')}}</a>
+                            <form action="{{route('delete',$shop->id)}}" method="post" class="d-inline">
                                 @csrf
                                 <button class="btn btn-danger" onclick='return confirm("削除しますか？");'>{{__('Go Delete')}}</button>
                             </form>

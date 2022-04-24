@@ -5,17 +5,17 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Insert Shop')}}</div>
+                <div class="card-header">{{ __('Edit Shop')}}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('create')}}">
+                    <form method="POST" action="{{ route('update',['id'=>$shop->id]) }}">
                         @csrf
 
                         <div class="row mb-3">
                             <label for="shop_name" class="col-md-4 col-form-label text-md-end">{{ __('Shop Name') }}</label>
 
                             <div class="col-md-6">
-                                <input id="shop_name" type="text" class="form-control @error('shop_mame') is-invalid @enderror" name="shop_name" value="{{ old('shop_name') }}" required autocomplete="shop_name" autofocus>
+                                <input id="shop_name" type="text" class="form-control @error('shop_mame') is-invalid @enderror" name="shop_name" value="{{$shop->shop_name}}" required autocomplete="shop_name" autofocus>
 
                                 @error('shop_name')
                                     <span class="invalid-feedback" role="alert">
@@ -29,7 +29,7 @@
                             <label for="shop_pref" class="col-md-4 col-form-label text-md-end">{{ __('Shop Pref') }}</label>
 
                             <div class="col-md-6">
-                                <input id="shop_pref" type="text" class="form-control @error('shop_pref') is-invalid @enderror" name="shop_pref" value="{{ old('shop_pref') }}" required autocomplete="shop_pref" autofocus>
+                                <input id="shop_pref" type="text" class="form-control @error('shop_pref') is-invalid @enderror" name="shop_pref" value="{{$shop->shop_pref}}" required autocomplete="shop_pref" autofocus>
 
                                 @error('shop_pref')
                                     <span class="invalid-feedback" role="alert">
@@ -43,7 +43,7 @@
                             <label for="shop_city" class="col-md-4 col-form-label text-md-end">{{ __('Shop City') }}</label>
 
                             <div class="col-md-6">
-                                <input id="shop_city" type="text" class="form-control @error('shop_city') is-invalid @enderror" name="shop_city" required autocomplete="shop_city">
+                                <input id="shop_city" type="text" class="form-control @error('shop_city') is-invalid @enderror" name="{{$shop->shop_city}}" value="{{$shop->shop_city}}" required autocomplete="shop_city">
 
                                 @error('shop_city')
                                     <span class="invalid-feedback" role="alert">
@@ -57,7 +57,7 @@
                             <label for="nearest_station" class="col-md-4 col-form-label text-md-end">{{ __('Nearest Station') }}</label>
 
                             <div class="col-md-6">
-                                <input id="nearest_station" type="text" class="form-control @error('nearest_station') is-invalid @enderror" name="nearest_station" required autocomplete="nearest_station">
+                                <input id="nearest_station" type="text" class="form-control @error('nearest_station') is-invalid @enderror" name="nearest_station" value="{{$shop->nearest_station}}" required autocomplete="nearest_afstation">
 
                                 @error('nearest_station')
                                     <span class="invalid-feedback" role="alert">
@@ -71,7 +71,7 @@
                             <label for="budget_min" class="col-md-4 col-form-label text-md-end">{{ __('Budget Min') }}</label>
 
                             <div class="col-md-6">
-                                <input id="budget_min" type="number" class="form-control @error('budget_min') is-invalid @enderror" name="budget_min" value="{{ old('budget_min') }}" required autocomplete="budget_min" autofocus>
+                                <input id="budget_min" type="number" class="form-control @error('budget_min') is-invalid @enderror" name="budget_min" value="{{$shop->budget_min}}" required autocomplete="budget_min" autofocus>
 
                                 @error('budget_min')
                                     <span class="invalid-feedback" role="alert">
@@ -85,7 +85,7 @@
                             <label for="budget_max" class="col-md-4 col-form-label text-md-end">{{ __('Budget Max') }}</label>
 
                             <div class="col-md-6">
-                                <input id="budget_max" type="number" class="form-control @error('budget_max') is-invalid @enderror" name="budget_max" required autocomplete="budget_max">
+                                <input id="budget_max" type="number" class="form-control @error('budget_max') is-invalid @enderror" name="budget_max" value="{{$shop->budget_max}}" required autocomplete="budget_max">
 
                                 @error('budget_max')
                                     <span class="invalid-feedback" role="alert">
@@ -97,7 +97,7 @@
                         <div class="row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
+                                    {{ __('Update') }}
                                 </button>
 
                             </div>

@@ -49,9 +49,40 @@ class ShopController extends Controller
 
     }
 
-    public function delete(Request $request){
+    public function edit($id){
 
-            return view('insert');
+        if(!ctype_digit($id)){
+            return redirect('/list')->with('flash_message',__('Invalid operation was performed'));
+        }
+
+        $shop = DB::table('shops')->where('id',$id)->first();
+
+        return view('edit',compact('shop'));
 
     }
+
+    public function update(Request $request, $id ){
+        if(!ctype_digit($id)){
+            return redirect('/list')->with('flash_message',__('Invalid operation was performed'));
+        }
+
+        $shop = Shop::query()->where('id', $id)->first();
+        $shop->fill($request->all())->save();
+
+        return redirect('/list')->with('flash_message',__('Updated'));
+
+    }
+
+    public function delete($id){
+        if(!ctype_digit($id)){
+            return redirect('/list')->with('flash_message',__('Invalid operation was performed'));
+        }
+
+        $shop = Shop::query()->where('id', $id)->first();
+        $shop->delete();
+
+        return redirect('/list')->with('flash_message',__('Deleted'));
+    }
+
+
 }
