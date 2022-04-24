@@ -33,6 +33,9 @@ Route::get('/list', [App\Http\Controllers\ShopController::class, 'list'])->middl
 Route::get('/edit/{id}', [App\Http\Controllers\ShopController::class, 'edit'])->middleware('auth:admin')->name('edit');
 Route::post('/update/{id}', [App\Http\Controllers\ShopController::class, 'update'])->middleware('auth:admin')->name('update');
 Route::post('/delete/{id}', [App\Http\Controllers\ShopController::class, 'delete'])->middleware('auth:admin')->name('delete');
+Route::post('/search', [App\Http\Controllers\ShopController::class, 'search'])->name('search');
+Route::get('/result', [App\Http\Controllers\ShopController::class, 'result'])->name('result');
+Route::get('/detail/{id}', [App\Http\Controllers\ShopController::class, 'detail'])->name('detail');
 
 Route::view('/admin','admin')->middleware('auth:admin')->name('admin-home');
 

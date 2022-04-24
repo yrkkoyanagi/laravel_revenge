@@ -84,5 +84,46 @@ class ShopController extends Controller
         return redirect('/list')->with('flash_message',__('Deleted'));
     }
 
+    public function search(Request $request){
+
+        $shop_name = $request->shop_name;
+        $shop_pref = $request->shop_pref;
+        $shop_city = $request->shop_city;
+        $nearest_station = $request->nearest_station;
+
+        $query = Shop::query();
+
+        if(isset($shop_name)){
+            $query->where('shop_name','like','%'.$shop_name.'%');
+        }
+
+        if(isset($shop_pref)){
+            $query->where('shop_pref','like','%'.$shop_pref.'%');
+        }
+
+        if(isset($shop_city)){
+            $query->where('shop_city','like','%'.$shop_city.'%');
+        }
+
+        if(isset($nearest_station)){
+            $query->where('nearest_station','like','%'.$nearest_station.'%');
+        }
+
+        $shops = $query->get();
+        return view('result' , ['shops'=>$shops]);
+    }
+
+    public function detail($id){
+
+        if(!ctype_digit($id)){
+            return redirect('/list')->with('flash_message',__('Invalid operation was performed'));
+        }
+
+        $shop = DB::table('shops')->where('id',$id)->first();
+
+        return view('detail',compact('shop'));
+
+    }
+
 
 }
