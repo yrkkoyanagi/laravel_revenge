@@ -90,6 +90,8 @@ class ShopController extends Controller
         $shop_pref = $request->shop_pref;
         $shop_city = $request->shop_city;
         $nearest_station = $request->nearest_station;
+        $budget_min = $request->budget_min;
+        $budget_max = $request->budget_max;
 
         $query = Shop::query();
 
@@ -107,6 +109,14 @@ class ShopController extends Controller
 
         if(isset($nearest_station)){
             $query->where('nearest_station','like','%'.$nearest_station.'%');
+        }
+
+        if(isset($budget_min)){
+            $query->where('budget_min','>=',$budget_min);
+        }
+
+        if(isset($budget_max)){
+            $query->where('budget_max','<=',$budget_max);
         }
 
         $shops = $query->get();

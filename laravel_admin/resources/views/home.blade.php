@@ -64,6 +64,33 @@
                                 @enderror
                             </div>
                         </div>
+                        <div class="row mb-3">
+                            <label for="budget_min" class="col-md-4 col-form-label text-md-end">{{ __('Budget Min') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="budget_min" type="text" class="form-control @error('budget_min') is-invalid @enderror" name="budget_min"  autocomplete="budget_min">
+
+                                @error('budget_min')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="budget_max" class="col-md-4 col-form-label text-md-end">{{ __('Budget Max') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="budget_man" type="number" class="form-control @error('budget_max') is-invalid @enderror" name="budget_max" autocomplete="budget_max">
+
+                                @error('budget_max')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
 
                         <div class="row mb-0">
                             <div class="col-md-8 offset-md-4">
