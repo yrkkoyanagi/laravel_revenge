@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Shop;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Log;
 
 class ShopController extends Controller
 {
@@ -34,13 +35,8 @@ class ShopController extends Controller
             'nearest_station' => $request->nearest_station,
             'budget_min' => $request->budget_min,
             'budget_max' => $request->budget_max,
-            'party' => 0,
-            'small' => 0,
-            'girls' => 0,
-            'seafood' => 0,
-            'brandcow' => 0,
-            'localsake' => 0,
-            'craftbeer' => 0
+            'use_case' => 0,
+            'food' => 0
         ]);
 
         $shop->save();
@@ -92,7 +88,9 @@ class ShopController extends Controller
         $nearest_station = $request->nearest_station;
         $budget_min = $request->budget_min;
         $budget_max = $request->budget_max;
-
+        $use_cases = $request->use_case;
+        $foods = $request->food;
+        //dump($use_cases);
         $query = Shop::query();
 
         if(isset($shop_name)){
@@ -119,7 +117,22 @@ class ShopController extends Controller
             $query->where('budget_max','<=',$budget_max);
         }
 
+        if(isset($use_cases)){
+            foreach($use_cases as $use_case){
+                $query->where('use_case','like','%'.$use_case.'%');
+            }
+        }
+
+        if(isset($foods)){
+            foreach($foods as $food){
+                $query->where('food','like','%'.$food.'%');
+            }
+        }
+
+
+        //\DB::enableQueryLog();
         $shops = $query->get();
+        //dd(\DB::getQueryLog());
         return view('result' , ['shops'=>$shops]);
     }
 

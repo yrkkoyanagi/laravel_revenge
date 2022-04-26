@@ -16,12 +16,7 @@ class Shop extends Model
         'nearest_station',
         'budget_min',
         'budget_max',
-        'party',
-        'small',
-        'girls',
-        'seafood',
-        'brandcow',
-        'localsake',
-        'craftbeer'
+        'use_case',
+        'food'
     ];
 }
