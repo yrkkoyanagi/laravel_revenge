@@ -14,6 +14,7 @@ class Shop extends Model
         'shop_pref',
         'shop_city',
         'nearest_station',
+        'create_user',
         'budget_min',
         'budget_max',
         'use_case',

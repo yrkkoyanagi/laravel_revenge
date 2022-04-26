@@ -27,16 +27,38 @@ class ShopController extends Controller
 
     public function create(Request $request){
         $shop = new Shop();
-
+        //Log::debug(dump($request));
+        $use_cases = $request->use_case;
+        $use_case = '';
+        for($i=0; $i<count($use_cases); $i++){
+            if($i==0){
+                $use_case = $use_cases[0];
+            }else{
+                $use_case = $use_case .','.$use_cases[$i];
+            }
+        }
+        $foods = $request->food;
+        $food = '';
+        $size2 = count($foods);
+        for($i=0; $i<count($foods); $i++){
+            if($i==0){
+                $food = $foods[0];
+            }else{
+                $food = $food .','.$foods[$i];
+            }
+        }
+        $admin_id = Auth::user()->id;
         $model = $shop->fill([
             'shop_name'=> $request->shop_name,
             'shop_pref' => $request->shop_pref,
             'shop_city' => $request->shop_city,
             'nearest_station' => $request->nearest_station,
+            'create_user' => $admin_id,
             'budget_min' => $request->budget_min,
             'budget_max' => $request->budget_max,
-            'use_case' => 0,
-            'food' => 0
+            'use_case' => $use_case,
+            'food' => $food
+
         ]);
 
         $shop->save();
