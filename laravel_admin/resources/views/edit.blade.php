@@ -94,6 +94,37 @@
                                 @enderror
                             </div>
                         </div>
+                        <div class="row mb-3">
+                            <label for="use_case" class="col-md-4 col-form-label text-md-end">{{ __('Use Case') }}</label>
+                            <div class="col-md-6">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" name="use_case[]" @if( strpos($shop->use_case, '1') !== false ) checked @endif value="1">宴会
+                                </div>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" name="use_case[]" @if( strpos($shop->use_case, '2') !== false ) checked @endif value="2">少人数
+                                </div>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" name="use_case[]" @if( strpos($shop->use_case, '3') !== false ) checked @endif value="3">女子会
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="food" class="col-md-4 col-form-label text-md-end">{{ __('Food') }}</label>
+                            <div class="col-md-6">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" name="food[]" @if( strpos($shop->food, '1') !== false ) checked @endif value="1">海鮮
+                                </div>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" name="food[]" @if( strpos($shop->food, '2') !== false ) checked @endif value="2">銘柄牛
+                                </div>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" name="food[]" @if( strpos($shop->food, '3') !== false ) checked @endif value="3">地酒
+                                </div>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" name="food[]" @if( strpos($shop->food, '4') !== false ) checked @endif value="4">クラフトビール
+                                </div>
+                            </div>
+                        </div>
                         <div class="row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
